@@ -1,5 +1,5 @@
 # Password-Generator
-Django App to generate random passwords
+A Python Django App to genhoerate random passwords
 
 **Step 1**
 
