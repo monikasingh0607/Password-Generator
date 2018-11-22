@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Password Generator</title>
+    <!--adding bootstrap, custom css and fontawesome files-->
+    <link href="{% static '/password_gen/bootstrap-4/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/password_gen/css/mystyle.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="site-brand">
+            <div class="container">
+                <h3>Password Generator</h3>
+            </div>
+        </div>
+    </header>
+    <main class="content top-buffer" role="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 mx-auto">
+                    <form method="POST" id="myform" action="{% url 'generate_password' %}">
+                        {% csrf_token %}
+                        <div class="form-group mb-3 px-2 text-primary">
+                            <label for="pass_len">Enter length required for Password <span class="text-danger">(Max- 64)</span></label>
+                            <input type="text" class="form-control" id="pass_len" placeholder="Default is 8" onkeypress='validate(event)' required>
+                        </div>
+                        <div class="form-group mb-3 px-2 text-primary">
+                            <label for="pass_no">Enter required number of Passwords <span class="text-danger">(Max- 100)</span></label>
+                            <input type="text" class="form-control" id="pass_no" placeholder="Default is 10" onkeypress='validate(event)' required>
+                        </div>
+                        <div class="text-center btn-div">
+                            <button type="button" class="btn btn-sub">Generate Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row top-buffer">
+                <div class="col-8 mx-auto">
+                    <span class="text-success">Passwords: </span>
+                    <textarea class="pass-field" id="passField" rows="10" cols="75">
+
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer footer-text top-buffer">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto">
+                    <p>Generate Password: All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'mypf/js/jquery3.3.1.js' %}"></script>
+    <script src="{% static 'mypf/bootstrap-4/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'password_gen/js/myscript.js' %}"></script>
+</body>
+</html>
